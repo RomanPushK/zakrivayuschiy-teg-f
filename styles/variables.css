@@ -10,4 +10,8 @@
   --label-stroke: rgb(255 255 255 / 0.5);
   --accent-color: #000;
   --main-color: #fff;
+  --animation-fill-color: #f00;
+  --contour-fill-color: #000;
+  --core-fill-color: #fff;
+  --sparks-fill-color: #f00;
 }
