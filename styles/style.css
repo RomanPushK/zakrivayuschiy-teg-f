@@ -21,22 +21,23 @@
 .header {
   display: grid;
   place-items: center;
-  margin-block: 100px;
-  block-size: clamp(327px, 19.5352rem + 3.8498vw, 368px);
+  margin-block: 100px 98px;
   background-color: var(--main-color);
-  font-family: var(--accent-font), sans-serif;
+  font-family: var(--accent-font), fantasy;
   text-transform: uppercase;
   border: 2px solid var(--accent-color);
 }
 
 .content-box {
-  margin-inline: clamp(0rem, -8.1426rem + 34.7418vw, 23.125rem);
+  inline-size: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
+  margin-inline: auto;
 }
 
 .header-text {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-block: clamp(7.5625rem, 7.3864rem + 0.7512vw, 8.0625rem);
 }
 
 .main-header {
@@ -51,7 +52,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 52px;
+  gap: 50px;
 }
 
 .card {
@@ -63,6 +64,7 @@
   font-size: 18px;
   font-variation-settings: "wght" var(--headings-font-weight);
   padding: 4px 10px;
+  border-block-end: 2px solid var(--accent-color);
 }
 
 .card-image-wrapper {
@@ -70,13 +72,21 @@
 }
 
 .card-image {
+  /* Но ведь object-fit нужно использовать когда у обертки четко заданы границы
+     за которые нельзя выступать. Я не увидел нигде, что ихображения должны быть
+     именно квадатными, поэтому сделал так. Если так написать, то у картинки
+     будут сохраняться пропорции всегда, и при этом, она будет подстраиваться под
+     ширину карточки. Анлаки если я просто пропустил в тексте задания строку про 
+     квадратное изображение*/
   inline-size: 100%;
+  block-size: auto;
+  border-block-end: 2px solid var(--accent-color);
 }
 
 .card-image-label {
   color: rgb(0 0 0 / 0.5);
   font-size: 14px;
-  font-family: var(--accent-font), sans-serif;
+  font-family: var(--accent-font), fantasy;
   position: absolute;
   top: 27px;
   right: 26px;
@@ -100,7 +110,8 @@
   gap: 25px;
   flex-direction: column;
   padding-inline: 26px;
-  padding-block: 20px;
+  padding-block-start: 20px;
+  padding-block-end: 26px;
 }
 
 .card-text {
@@ -116,12 +127,12 @@
 }
 
 .card__icon-button {
-  inline-size: 39px;
-  block-size: 39px;
-  text-align: center;
+  display: grid;
+  place-content: center;
+  inline-size: 38px;
+  block-size: 38px;
   cursor: pointer;
   border: 2px solid transparent;
-  align-self: center;
   background-color: var(--main-color);
   transition: border-color 0.3s ease;
 }
@@ -229,13 +240,13 @@
 
 .card__like-button {
   padding-block-start: 5px;
-  block-size: 39px;
-  inline-size: 118px;
+  block-size: 38px;
+  inline-size: 129px;
 }
 
 .button__text {
   mix-blend-mode: difference;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
 }
 
@@ -265,7 +276,7 @@
 }
 
 .save-dialog::backdrop {
-  background-color: rgb(0 0 0 / 0.5);
+  background-color: rgb(0 0 0 / 0.75);
 }
 
 .save-dialog[open] .dialog-svg {
@@ -275,7 +286,7 @@
 }
 
 .dialog-text {
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: 14px;
   line-height: 150%;
   text-transform: uppercase;
@@ -286,41 +297,38 @@
   padding-block: 10.5px;
 }
 
-.card-1 {
+.filter-contrast {
   filter: contrast(150%);
 }
 
-.card-2 {
+.filter-grayscale {
   filter: grayscale(0.8);
 }
 
-.card-3 {
+.filter-invert {
   filter: invert(100%);
 }
 
-.card-4 {
+.filter-hue-rotate {
   filter: hue-rotate(90deg);
 }
 
-.card-5 {
+.filter-saturate-contrast {
   filter: saturate(130%) contrast(130%);
 }
 
-.card-6 {
-  filter: blur(3px) grayscale(0.3);
+.filter-blur-grayscale {
+  filter: blur(3px) grayscale(0.4);
 }
 
-.card-7 {
-  filter: hue-rotate(170deg);
-}
-
-@media (width <= 375px) {
+@media (width < 375px) {
   .main-header {
     font-size: 42px;
   }
 
   .content-box {
     margin-inline: 0;
+    inline-size: 100%;
   }
 }
 
