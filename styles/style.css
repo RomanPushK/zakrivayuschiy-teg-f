@@ -68,18 +68,16 @@
 }
 
 .card-image-wrapper {
+  display: flex;
   position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
 }
 
 .card-image {
-  /* Но ведь object-fit нужно использовать когда у обертки четко заданы границы
-     за которые нельзя выступать. Я не увидел нигде, что ихображения должны быть
-     именно квадатными, поэтому сделал так. Если так написать, то у картинки
-     будут сохраняться пропорции всегда, и при этом, она будет подстраиваться под
-     ширину карточки. Анлаки если я просто пропустил в тексте задания строку про 
-     квадратное изображение*/
-  inline-size: 100%;
-  block-size: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
   border-block-end: 2px solid var(--accent-color);
 }
 
